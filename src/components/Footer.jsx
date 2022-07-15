@@ -9,24 +9,25 @@ import {
   VisuallyHidden,
   chakra,
   useColorModeValue,
+  Heading,
 } from '@chakra-ui/react';
 import { FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
 
 
-const ListHeader = ({ children }) => {
-    return (
-      <Text fontWeight={'1000'} fontSize={'2xl'} mb={2}>
-        {children}
-      </Text>
-    );
-  };
-  const ListHeader2 = ({ children }) => {
-    return (
-      <Text fontWeight={'700'} fontSize={'2xl'} mb={2}>
-        {children}
-      </Text>
-    );
-  };
+// const ListHeader = ({ children }) => {
+//     return (
+//       <Text fontWeight={'1000'} fontSize={'2xl'} mb={2}>
+//         {children}
+//       </Text>
+//     );
+//   };
+//   const ListHeader2 = ({ children }) => {
+//     return (
+//       <Text fontWeight={'700'} fontSize={'2xl'} mb={2}>
+//         {children}
+//       </Text>
+//     );
+//   };
 
   const SocialButton = ({
     children,
@@ -64,28 +65,28 @@ export default function Footer() {
           <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={4}>
 
             <Stack align={'flex-start'}>
-              <ListHeader>Shop Non-Stop On Meesho</ListHeader>
+              <Heading>Shop Non-Stop On Meesho</Heading>
               <Text>Trusted by more than 1 Crore Indians
                 Cash on Delivery | Free Delivery</Text>
             </Stack>
 
 
 
-            <Stack align={'flex-start'} paddingTop={10} paddingLeft={10}>
+            <Stack align={'flex-start'} paddingTop={10} paddingLeft={[32,30,10,10]}>
               <Link href={'#'}>Careers</Link>
               <Link href={'#'}>Become a Supplier</Link>
               <Link href={'#'}>Our Influencer Program</Link>
               <Link href={'#'}>Hall of Fame</Link>
             </Stack>
   
-            <Stack align={'flex-start'} paddingTop={10}>
+            <Stack align={'flex-start'} paddingTop={10} paddingLeft={[32,30,10,10]}>
               <Link href={'#'}>Legal and Policies</Link>
               <Link href={'#'}>Meesho Tech Blog</Link>
               <Link href={'#'}>Notices and Returns</Link>
             </Stack>
   
             <Stack align={'flex-start'} alignItems={"left"}>
-                <ListHeader2>Contact US</ListHeader2>
+                <Heading>Contact US</Heading>
                <Text>Fashnear Technologies Private Limited,
 CIN: U74900KA2015PTC082263
 06-105-B, 06-102, (138 Wu) Vaishnavi Signature, No. 78/9, Outer Ring Road, Bellandur, Varthur Hobli, Bengaluru-560103, Karnataka, India

@@ -9,6 +9,8 @@ import { Getdata } from '../Redux/action'
 import ProductSimple from './ProductSimple'
 import Footer from './Footer'
 import {Link as Routerlink} from "react-router-dom"
+import "../style/Poster.css"
+
 
 
 function Home() {
@@ -22,18 +24,16 @@ function Home() {
   return (
     <div>
         <Navbar/>
-        <Box margin={20}>
           <Poster/>
-        </Box>
         <Flex>
-            <Box w={"300px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} marginLeft={20}></Box>
-            <Box>        <Heading >Top Categories to choose from</Heading></Box>
+            <Box w={"300px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} marginLeft={[15,15,24,24]}></Box>
+            <Box>        <Heading fontSize={{base:"10px", md:"20",lg:"35px"}} >Top Categories to choose from</Heading></Box>
             <Box w={"300px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} ></Box>
         </Flex>
         <Poster2/>
         <Flex>
-            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} marginLeft={24}></Box>
-            <Box>        <Heading >Products for You</Heading></Box>
+            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} marginLeft={[15,15,24,24]}></Box>
+            <Box>        <Heading fontSize={{base:"10px", md:"20",lg:"35px"}} >Products for You</Heading></Box>
             <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} ></Box>
         </Flex>
         <div>
