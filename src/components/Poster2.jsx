@@ -4,11 +4,11 @@ import React from 'react'
 function Poster2() {
   return (
     
-        <SimpleGrid minChildWidth={"400px"} className='con2'  marginTop={6}>
-            <Box margin={"auto"} padding={5}>  
-                 <img src="https://images.meesho.com/images/marketing/1649760442043.webp" alt="" width={"400px"}/>
+        <SimpleGrid minChildWidth={"350px"} className='con2'  marginTop={6} justifyContent={"space-around"}>
+            <Box margin={"auto"} padding={[14,4,4,6]}>  
+                 <img src="https://images.meesho.com/images/marketing/1649760442043.webp" alt="" width={"380px"}/>
             </Box>
-            <Box minChildWidth={"400px"}  padding={5}>
+            <Box  margin={"auto"}  padding={[14,4,4,6]}>
                  <img src="https://images.meesho.com/images/marketing/1649760423313.webp" alt=""  width={"440px"}/>
             </Box>
         </SimpleGrid>

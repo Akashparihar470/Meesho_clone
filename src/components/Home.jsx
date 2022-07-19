@@ -25,16 +25,16 @@ function Home() {
     <div>
         <Navbar/>
           <Poster/>
-        <Flex>
-            <Box w={"300px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} marginLeft={[15,15,24,24]}></Box>
+        <Flex justifyContent={"space-around"}>
+            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} marginTop={4}></Box>
             <Box>        <Heading fontSize={{base:"10px", md:"20",lg:"35px"}} >Top Categories to choose from</Heading></Box>
-            <Box w={"300px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} ></Box>
+            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} marginTop={4}></Box>
         </Flex>
         <Poster2/>
-        <Flex>
-            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} marginLeft={[15,15,24,24]}></Box>
+        <Flex justifyContent={"space-around"}>
+            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} marginTop={4}></Box>
             <Box>        <Heading fontSize={{base:"10px", md:"20",lg:"35px"}} >Products for You</Heading></Box>
-            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"} margin={6} ></Box>
+            <Box w={"400px"} h={"1px"} bg={"rgb(247, 168, 202)"}marginTop={4} ></Box>
         </Flex>
         <div>
             <Flex flexWrap={"wrap"} justifyContent={"space-around"} margin={20}>
