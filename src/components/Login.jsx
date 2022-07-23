@@ -14,19 +14,76 @@ import {
   import { useDisclosure } from '@chakra-ui/react'
   
   import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { authentication } from "../Auth/firebase"
 
 
 
 function Login() {
+    const [loginbutton,setLoginbutton] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate();
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        navigate("/", { replace: true });
-      }
 
- 
+    const [phone,setPhone] = useState("");
+    const [OTP,setOTP] = useState("");
+
+    const handlesave = (e)=>{
+      setPhone(e.target.value);
+    }
+    const configRecaptcha=()=>{
+      window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
+       'size': 'invisible',
+       'callback': (response) => {
+         // reCAPTCHA solved, allow signInWithPhoneNumber.
+       },
+        defaultCountry:"IN"
+     }, authentication)
+    }
+
+    const handleget=()=>{
+       onOpen();
+       configRecaptcha();
+       let appVerifier = window.recaptchaVerifier;
+       let phoneNumber ="+91"+phone;
+       console.log(phoneNumber)
+       signInWithPhoneNumber(authentication,phoneNumber,appVerifier)
+       .then(confirmationResult => {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;
+        // ...
+      }).catch((error) => {
+        // Error; SMS not sent
+        // ...
+        console.log(error)
+      });
+    }
+
+    const verifyOTP =(e)=>{
+      let otp = e.target.value
+        setOTP(otp);
+        if(otp.length === 6){
+         let confirmationResult = window.confirmationResult;
+         confirmationResult.confirm(otp).then((result) => {
+          // User signed in successfully.
+          const user = result.user;
+          console.log(user);
+          setLoginbutton(true)
+          navigate("/", { replace: true });
+          // ...
+        }).catch((error) => {
+          // User couldn't sign in (bad verification code?)
+          // ...
+          console.log(error)
+        }); 
+        }
+    }
+
+    
+
+   
 
   return (
     <Box>
@@ -39,9 +96,10 @@ function Login() {
           <Box >
             <Heading as={"h3"} size="md" padding={6}>Sign Up to view your profile</Heading>
             <FormControl  padding={8}>
+                <div id='sign-in-button'> </div>
                 <FormLabel>Phone Number</FormLabel>
-                <Input/>
-                <Button mt={4} onClick={onOpen} width={"300px"} marginTop={"10px"} backgroundColor={"pink.400"} color={"white"}>Send OTP</Button>
+                <Input type={"number"} onChange={handlesave}/>
+                <Button mt={4} onClick={handleget} width={"300px"} marginTop={"10px"} backgroundColor={"pink.400"} color={"white"}>Send OTP</Button>
             </FormControl>
             <Text fontSize={"15px"} padding={6} marginTop={"20px"}>By continuing, you agree to Meesho’s 
                   Terms & Conditions  
@@ -58,15 +116,15 @@ function Login() {
           <ModalHeader>Enter OTP</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-             <Input placeholder='OTP'></Input>
+             <Input placeholder='OTP' value={OTP} onChange={verifyOTP}></Input>
           </ModalBody>
 
-          <ModalFooter>
+          {/* <ModalFooter>
             <Button onClick={onClose} variant='ghost'>
               Back
             </Button>
-            <Button colorScheme='blue' mr={3}  onClick={handleSubmit}>Submit</Button>
-          </ModalFooter>
+            <Button colorScheme='blue' mr={3}  >Submit</Button>
+          </ModalFooter> */}
         </ModalContent>
       </Modal>
     </Box>

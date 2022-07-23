@@ -25,6 +25,8 @@ import {FaMobile} from "react-icons/fa";
 import {FaCartPlus} from "react-icons/fa";
 import Cartcounter from './Cartcounter';
 import {Link as Routerlink} from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { "fa-solid fa-user" } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -63,11 +65,7 @@ export default function Navbar() {
                   variant={'link'}
                   cursor={'pointer'}
                   minW={0}>
-                  <Avatar
-                    size={'sm'}
-                    src={'https://avatars.dicebear.com/api/male/username.svg'}
-                  />
-                  <Text>Profile</Text>
+                 <FontAwesomeIcon icon="fa-solid fa-user" />                  <Text>Profile</Text>
                 </MenuButton>
                 <MenuList alignItems={'center'}>
                   <MenuDivider />
